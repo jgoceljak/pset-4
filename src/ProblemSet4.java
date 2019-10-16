@@ -27,17 +27,17 @@ public class ProblemSet4 {
 
         // comment out or uncomment as needed
 
-        ps.sum();
+        // ps.sum();
         ps.reverse();
-        ps.digits();
-        ps.average();
-        ps.prime();
-        ps.fibonacci();
-        ps.factors();
-        ps.mario();
-        ps.luigi();
-        ps.credit();
-
+        // ps.digits();
+        // ps.average();
+        // ps.prime();
+        // ps.fibonacci();
+        // ps.factors();
+        // ps.mario();
+        // ps.luigi();
+        // ps.credit();
+        //
         in.close();
     }
 
@@ -83,8 +83,23 @@ public class ProblemSet4 {
      */
 
     public void reverse() {
+      long reverseInt = 0;
+      long lastDigit = 0;
+      do {
+      System.out.print("\nEnter a positive integer: ");
+      reverseInt = in.nextLong();
+    } while (reverseInt <=0);
+    System.out.print("\n");
+      do {
+          lastDigit = reverseInt % 10;
+          System.out.printf("%d, ", lastDigit);
+          reverseInt = reverseInt / 10;
+      } while (reverseInt >= 10);
 
-    }
+      lastDigit = reverseInt % 10;
+      System.out.printf("%d. ", lastDigit);
+}
+
 
     /*
      * Exercise 3.
