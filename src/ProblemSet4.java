@@ -28,9 +28,9 @@ public class ProblemSet4 {
         // comment out or uncomment as needed
 
         // ps.sum();
-        ps.reverse();
+        // ps.reverse();
         // ps.digits();
-        // ps.average();
+        ps.average();
         // ps.prime();
         // ps.fibonacci();
         // ps.factors();
@@ -109,7 +109,22 @@ public class ProblemSet4 {
      */
 
     public void digits() {
-
+      System.out.print("\nEnter a positive integer: ");
+      long oddSumInt = in.nextLong();
+      long currentDigit = 0;
+      long oddSum = 0;
+      while (oddSumInt <= 0){
+        System.out.print("\nEnter a positive integer: ");
+        oddSumInt = in.nextLong();
+      }
+      while (oddSumInt > 0){
+        currentDigit = oddSumInt % 10;
+        if ((currentDigit % 2) != 0){
+          oddSum = oddSum + currentDigit;
+        }
+        oddSumInt = oddSumInt/10;
+      }
+      System.out.println(oddSum);
     }
 
     /*
@@ -122,6 +137,36 @@ public class ProblemSet4 {
 
     public void average() {
 
+      long averageInt = 0;
+      double averageSum = 0;
+      long counter = 0;
+      boolean firstInput = true;
+
+      while (firstInput){
+        System.out.print("\nNon-negative integers: ");
+        averageInt = in.nextLong();
+        System.out.println("first");
+        if (averageInt > 0){
+          firstInput = false;
+        }
+    }
+    averageSum = averageSum + averageInt;
+    counter++;
+
+    do {
+      System.out.print("\nNon-negative integers: ");
+      averageInt = in.nextLong();
+      if (averageInt >= 0){
+        averageSum = averageSum + averageInt;
+        System.out.println(averageSum);
+        counter++;
+      }
+    } while (averageInt > 0);
+
+    double average = averageSum/counter;
+
+    System.out.println(counter);
+    System.out.printf("\n%,.2f.\n", average);
     }
 
     /*
