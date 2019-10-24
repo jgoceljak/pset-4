@@ -176,6 +176,31 @@ public class ProblemSet4 {
      */
 
     public void prime() {
+      boolean inputValid = false;
+      System.out.print("\nNon-negative integer: ");
+      long number = in.nextLong();
+      boolean isPrime = true;
+
+      while (!inputValid) {
+        if (number >= 0) {
+          inputValid = true;
+        }else{
+          System.out.print("Non-negative integer: ");
+          number = in.nextLong();
+        }
+      }
+      for (int i = 2; i <= Math.ceil(Math.sqrt(number)) ; i++ ) {
+        double testNumber = number;
+        if ((testNumber % i) == 0) {
+          isPrime = false;
+        }
+      }
+
+      if (isPrime) {
+        System.out.println("\nPrime");
+      }else {
+        System.out.println("\nNot prime.");
+      }
 
     }
 
@@ -187,6 +212,30 @@ public class ProblemSet4 {
      */
 
     public void fibonacci() {
+      boolean inputValid = false;
+      System.out.print("\nPositive integer: ");
+      long nth = in.nextLong();
+      long number1 = 0;
+      long number2 = 1;
+      int i = 1;
+
+      while (!inputValid) {
+        if ((nth > 0) && (nth <= 92)) {
+          inputValid = true;
+        }else{
+          System.out.print("Positive integer: ");
+          nth = in.nextLong();
+        }
+      }
+
+      while (i <= nth) {
+         long sum = number1 + number2;
+         number1 = number2;
+         number2 = sum;
+         i++;
+      }
+      System.out.println("\n" + number1 + ".");
+    }
 
     }
 
@@ -197,6 +246,28 @@ public class ProblemSet4 {
      */
 
     public void factors() {
+      boolean inputValid = false;
+            System.out.print("\nPositive integer: ");
+            long number = in.nextLong();
+
+
+            while (!inputValid) {
+              if (number > 0) {
+                inputValid = true;
+              }else{
+                System.out.print("Positive integer: ");
+                number = in.nextLong();
+              }
+            }
+            System.out.println("");
+            System.out.print("1, " + number);
+            for (int i = 2; i <= (number /i)  ; i++ ) {
+              double testNumber = number;
+              if  ((testNumber % i) == 0) {
+                System.out.print(", " + i + ", " + (number/i));
+              }
+            }
+            System.out.print(".");
 
     }
 
