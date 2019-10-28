@@ -27,15 +27,15 @@ public class ProblemSet4 {
 
         // comment out or uncomment as needed
 
-        // ps.sum();
-        // ps.reverse();
-        // ps.digits();
+        ps.sum();
+        ps.reverse();
+        ps.digits();
         ps.average();
-        // ps.prime();
-        // ps.fibonacci();
-        // ps.factors();
-        // ps.mario();
-        // ps.luigi();
+        ps.prime();
+        ps.fibonacci();
+        ps.factors();
+        ps.mario();
+        ps.luigi();
         // ps.credit();
         //
         in.close();
@@ -52,7 +52,7 @@ public class ProblemSet4 {
      */
 
     public void sum() {
-
+      System.out.print("\n");
       System.out.print("Lower Bound: ");
       long lowerBound = in.nextLong();
       System.out.print("Upper Bound: ");
@@ -70,7 +70,7 @@ public class ProblemSet4 {
           sum = sum + i;
         } else {}
       }
-      System.out.println(sum);
+      System.out.printf("\n%,d." ,sum);
 
 
     }
@@ -85,19 +85,25 @@ public class ProblemSet4 {
     public void reverse() {
       long reverseInt = 0;
       long lastDigit = 0;
+      boolean oneDigit = false;
+      System.out.println("\n");
       do {
-      System.out.print("\nEnter a positive integer: ");
+      System.out.print("Enter a positive integer: ");
       reverseInt = in.nextLong();
     } while (reverseInt <=0);
     System.out.print("\n");
       do {
           lastDigit = reverseInt % 10;
+          if (reverseInt < 10){
+            System.out.printf("%d. ", lastDigit);
+            oneDigit = true;
+          } else {
           System.out.printf("%d, ", lastDigit);
           reverseInt = reverseInt / 10;
-      } while (reverseInt >= 10);
+        }
+      } while (!oneDigit);
 
-      lastDigit = reverseInt % 10;
-      System.out.printf("%d. ", lastDigit);
+
 }
 
 
@@ -109,12 +115,13 @@ public class ProblemSet4 {
      */
 
     public void digits() {
-      System.out.print("\nEnter a positive integer: ");
+      System.out.println("\n");
+      System.out.print("Enter a positive integer: ");
       long oddSumInt = in.nextLong();
       long currentDigit = 0;
       long oddSum = 0;
       while (oddSumInt <= 0){
-        System.out.print("\nEnter a positive integer: ");
+        System.out.print("Enter a positive integer: ");
         oddSumInt = in.nextLong();
       }
       while (oddSumInt > 0){
@@ -124,7 +131,7 @@ public class ProblemSet4 {
         }
         oddSumInt = oddSumInt/10;
       }
-      System.out.println(oddSum);
+      System.out.printf("\n%,d." ,oddSum);
     }
 
     /*
@@ -141,11 +148,10 @@ public class ProblemSet4 {
       double averageSum = 0;
       long counter = 0;
       boolean firstInput = true;
-
+      System.out.println("\n");
       while (firstInput){
-        System.out.print("\nNon-negative integers: ");
+        System.out.print("Non-negative integers: ");
         averageInt = in.nextLong();
-        System.out.println("first");
         if (averageInt > 0){
           firstInput = false;
         }
@@ -154,18 +160,16 @@ public class ProblemSet4 {
     counter++;
 
     do {
-      System.out.print("\nNon-negative integers: ");
+      System.out.print("Non-negative integers: ");
       averageInt = in.nextLong();
       if (averageInt >= 0){
         averageSum = averageSum + averageInt;
-        System.out.println(averageSum);
         counter++;
       }
     } while (averageInt > 0);
 
     double average = averageSum/counter;
 
-    System.out.println(counter);
     System.out.printf("\n%,.2f.\n", average);
     }
 
@@ -179,12 +183,12 @@ public class ProblemSet4 {
       boolean inputValid = false;
       System.out.print("\nNon-negative integer: ");
       long number = in.nextLong();
-      boolean isPrime = true;
+      boolean prime = true;
 
       while (!inputValid) {
         if (number >= 0) {
           inputValid = true;
-        }else{
+        } else{
           System.out.print("Non-negative integer: ");
           number = in.nextLong();
         }
@@ -192,13 +196,12 @@ public class ProblemSet4 {
       for (int i = 2; i <= Math.ceil(Math.sqrt(number)) ; i++ ) {
         double testNumber = number;
         if ((testNumber % i) == 0) {
-          isPrime = false;
+          prime = false;
         }
       }
-
-      if (isPrime) {
-        System.out.println("\nPrime");
-      }else {
+      if (prime) {
+        System.out.println("\nPrime.");
+      } else {
         System.out.println("\nNot prime.");
       }
 
@@ -212,23 +215,22 @@ public class ProblemSet4 {
      */
 
     public void fibonacci() {
-      boolean inputValid = false;
+      boolean valid = false;
       System.out.print("\nPositive integer: ");
-      long nth = in.nextLong();
+      long nthNumber = in.nextLong();
       long number1 = 0;
       long number2 = 1;
       int i = 1;
 
-      while (!inputValid) {
-        if ((nth > 0) && (nth <= 92)) {
-          inputValid = true;
-        }else{
+      while (!valid) {
+        if ((nthNumber > 0) && (nthNumber <= 92)) {
+          valid = true;
+        } else{
           System.out.print("Positive integer: ");
-          nth = in.nextLong();
+          nthNumber = in.nextLong();
         }
       }
-
-      while (i <= nth) {
+      while (i <= nthNumber) {
          long sum = number1 + number2;
          number1 = number2;
          number2 = sum;
@@ -237,7 +239,6 @@ public class ProblemSet4 {
       System.out.println("\n" + number1 + ".");
     }
 
-    }
 
     /*
      * Exercise 7.
@@ -246,28 +247,32 @@ public class ProblemSet4 {
      */
 
     public void factors() {
-      boolean inputValid = false;
-            System.out.print("\nPositive integer: ");
-            long number = in.nextLong();
+      boolean valid = false;
+      System.out.print("\nPositive integer: ");
+      long number = in.nextLong();
 
 
-            while (!inputValid) {
-              if (number > 0) {
-                inputValid = true;
-              }else{
-                System.out.print("Positive integer: ");
-                number = in.nextLong();
-              }
-            }
-            System.out.println("");
-            System.out.print("1, " + number);
-            for (int i = 2; i <= (number /i)  ; i++ ) {
-              double testNumber = number;
-              if  ((testNumber % i) == 0) {
-                System.out.print(", " + i + ", " + (number/i));
-              }
-            }
-            System.out.print(".");
+        while (!valid) {
+          if (number > 0) {
+            valid = true;
+          } else{
+            System.out.print("Positive integer: ");
+            number = in.nextLong();
+          }
+        }
+
+        System.out.println("");
+        System.out.print("1, " + number);
+
+        for (int i = 2; i <= (number /i)  ; i++ ) {
+          double testNumber = number;
+          if ((testNumber % i) == 0) {
+            double otherFactor = number/i;
+            long otherFactorInt =  (long)Math.floor(otherFactor + 0.5d);
+            System.out.print(", " + i + ", " + otherFactorInt);
+          }
+        }
+        System.out.print(".");
 
     }
 
@@ -279,7 +284,28 @@ public class ProblemSet4 {
      */
 
     public void mario() {
+      boolean valid = false;
+      System.out.println("\n");
+      System.out.print("Height: ");
+      long height = in.nextLong();
 
+      while (!valid) {
+        if (height > 0 && height <= 24) {
+          valid = true;
+        } else {
+          System.out.print("Height: ");
+          height = in.nextLong();
+        }
+      }
+
+      for (int i = 0; i < height; i++){
+        System.out.println();
+        for (int spaces = 0; spaces < height - 1 - i; spaces++){
+          System.out.print(" ");
+        }
+        for (int j = 0; j < i + 2 ; j++)
+          System.out.print("#");
+      }
     }
 
     /*
@@ -290,8 +316,41 @@ public class ProblemSet4 {
      */
 
     public void luigi() {
+      boolean valid = false;
+      System.out.println("\n");
+      System.out.print("Height: ");
+      long height = in.nextLong();
+
+      while (!valid) {
+        if (height > 0 && height <= 24) {
+          valid = true;
+        } else {
+          System.out.print("Height: ");
+          height = in.nextLong();
+        }
+      }
+      System.out.println("\n");
+      for (int i = 0; i < height; i++){
+        for (int spaces = 0; spaces < height - 1 - i; spaces++){
+          System.out.print(" ");
+        }
+        for (int j = 0; j < i + 2 ; j++){
+          System.out.print("#");
+        }
+        System.out.print("  ");
+
+        for (int j = 0; j < i + 2 ; j++){
+          System.out.print("#");
+        }
+        for (int spaces = 0; spaces < height - 1 - i; spaces++){
+            System.out.print(" ");
+      }
+        System.out.println();
 
     }
+  }
+
+
 
     /*
      * Exercise 10.
