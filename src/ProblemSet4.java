@@ -360,8 +360,8 @@ public class ProblemSet4 {
      */
 
     public void credit() {
-       int firstSum = 0;
-       int secondSum = 0;
+       int sumOne = 0;
+       int sumTwo = 0;
        String sumString = "";
        String cardType = "Invalid";
        long cardNum = 0;
@@ -369,7 +369,7 @@ public class ProblemSet4 {
        System.out.print("\nNumber: ");
        cardNum = in .nextLong();
        cardString = Long.toString(cardNum);
-
+       //loop for valid input
        while (cardNum <= 0) {
            System.out.print("Number: ");
            cardNum = in .nextLong();
@@ -380,18 +380,18 @@ public class ProblemSet4 {
            sumString = sumString + Integer.toString(2 * Integer.parseInt(cardString.substring(i, i + 1)));
        }
        for (int i = sumString.length() - 1; i >= 0; i --) {
-           firstSum = firstSum + Integer.parseInt(sumString.substring(i, i + 1));
+           sumOne = sumOne + Integer.parseInt(sumString.substring(i, i + 1));
        }
        for (int i = cardString.length() - 1; i >= 0; i -= 2 ) {
-           secondSum = secondSum + Integer.parseInt(cardString.substring(i, i + 1));
+           sumTwo = sumTwo + Integer.parseInt(cardString.substring(i, i + 1));
        }
        if (cardString.length() == 15 && (cardString.substring(0, 2).equals("37") ||
-         cardString.substring(0, 2).equals("34")) && ((firstSum + secondSum) % 10 == 0)) {
+         cardString.substring(0, 2).equals("34")) && ((sumOne + sumTwo) % 10 == 0)) {
            cardType = "Amex";
-       } else if ((cardString.length() == 16 || cardString.length() == 13) && ((firstSum + secondSum) % 10 == 0) &&
+       } else if ((cardString.length() == 16 || cardString.length() == 13) && ((sumOne + sumTwo) % 10 == 0) &&
          (cardString.substring(0, 1).equals("4"))) {
            cardType = "Visa";
-       } else if (cardString.length() == 16 && ((firstSum + secondSum) % 10 == 0)) {
+       } else if (cardString.length() == 16 && ((sumOne + sumTwo) % 10 == 0)) {
            switch (cardString.substring(0, 2)) {
                case "51":
                    cardType = "Mastercard";
